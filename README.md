@@ -61,4 +61,4 @@ Windows zeigt beim ersten Start eventuell eine SmartScreen-Warnung (weil die EXE
 git clone https://github.com/Gaja85/Manuskript_Helfer.git
 cd Manuskript_Helfer
 dotnet restore
-dotnet build -c Release
+
