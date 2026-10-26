@@ -23,7 +23,7 @@ Die Architektur folgt daraus: reine Lese-Pipeline, flache Zustandshaltung, UI oh
 Architektur
 Drei Schichten, streng getrennt:
 
-text
+
 ┌─────────────────────────────────┐
 │  UI (WPF)                       │
 │  MainWindow.xaml(.cs)           │
@@ -51,7 +51,7 @@ Persistenz läuft ausschließlich über Services (kein File.WriteAllText in der 
 Das macht die Services testbar und die UI austauschbar.
 
 Projektstruktur
-text
+
 ManuskriptHelfer/
 ├── ManuskriptHelfer.csproj
 ├── App.xaml / App.xaml.cs
@@ -70,7 +70,7 @@ ManuskriptHelfer/
 Alle Models liegen in einer Datei – das ist für ein Projekt dieser Größe Absicht und keine Nachlässigkeit. Bei mehr Modellen (z. B. Kategorien für die Prüfliste) würde ich aufteilen.
 
 Datenmodelle
-csharp
+
 public record Chapter(string Title, string Text);
 
 public record ChapterStats(
@@ -134,7 +134,7 @@ Aufgabe: Pro Kapitel Kennzahlen berechnen und Treffer finden.
 
 Konstanten:
 
-csharp
+
 private const double WordsPerMinute = 200;
 private const double CharactersPerNormPage = 1800;
 Analyze(Chapter):
@@ -251,7 +251,7 @@ Zustand in privaten Feldern von MainWindow.
 
 Async-Muster:
 
-csharp
+
 private async void OpenButton_Click(object sender, RoutedEventArgs e)
 {
     if (_busy) return;
@@ -286,7 +286,7 @@ SelectionMode="Extended", damit Mehrfachmarkierung funktioniert.
 
 Dateiformate
 figuren.json
-json
+
 [
   { "Name": "Lysander Falk", "Aliases": ["Lysander", "der Falkner"] },
   { "Name": "Burg Rosenstein", "Aliases": ["Rosenstein"] }
@@ -296,7 +296,7 @@ UTF-8, ohne BOM empfohlen.
 Kommentare und Trailing Commas werden beim Lesen toleriert (ReadCommentHandling.Skip, AllowTrailingCommas), beim Schreiben aber nicht erzeugt.
 
 geprueft.json
-json
+
 {
   "Repetitions": [
     { "Chapter": "Kapitel 3", "Word": "Schatten" }
@@ -310,7 +310,7 @@ Referenzen über (Kapitel, Wort/Name) – stabil gegen Textverschiebungen.
 Duplikate werden beim Markieren erkannt und nicht doppelt hinzugefügt.
 
 Review-Markdown
-markdown
+
 # Review: manuskriptname
 
 _Erstellt am 15.03.2025 14:23 · 24 Kapitel · 87.532 Wörter · 292 Normseiten_
@@ -376,11 +376,11 @@ SDK: .NET 8
 
 NuGet:
 
-xml
+
 <PackageReference Include="DocumentFormat.OpenXml" Version="3.1.0" />
 Build:
 
-bash
+
 dotnet restore
 dotnet build -c Release
 Ausgabe: bin/Release/net8.0-windows/ManuskriptHelfer.exe (Single-File-Veröffentlichung wäre möglich, aber noch nicht eingerichtet).
